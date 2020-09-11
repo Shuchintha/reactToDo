@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useState} from 'react';
 import './App.css';
 
 function App() {
+  const [items,setItems] = useState(["Start the application","Do the features","Finish the application"]);
+  const [inputStr, setInputStr] = useState('')
+  const input_OnChange = function(event){
+    console.log(event.target.value)
+    setInputStr(event.target.value)
+  }
+  const addItemToDo_OnClick = function(){
+    console.log("hey"+toString(inputStr))
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello world its Todo List{1+9}</h1>
+      <input value={inputStr} onChange={input_OnChange}/>
+      <button onClick = {addItemToDo_OnClick}>Add ToDo</button>
+      <ul>
+      {items.map(todo=>{return <li>{todo}</li>})}
+      </ul>
     </div>
   );
 }
